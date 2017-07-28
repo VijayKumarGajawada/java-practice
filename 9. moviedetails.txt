@@ -1,0 +1,111 @@
+9. Write a program in java to accept movie details like
+  1) movieID
+  2) moviename
+  3) actorname
+  4) directorname
+  5) yearofrelease
+  6) language(hindi, english, chinese)
+  7) totalincome
+  8) rating(1-5)
+
+Analysis
+1. total number of movies released.
+2. totalincome of all students.
+3. total movies with rating >=4.
+4. total movies language wise.
+5. total movies with director name "JohnD"
+6. total movies with duration > 1.5 hours.
+
+PROGRAM
+-------
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+class MovieDetails{
+	String movieID;
+	String movieName;
+	String actorName;
+	String directorName;
+	int dname;
+	int yearOfRelease;
+	String language;
+	int hindi, english, chinese;
+	int income;
+	int totalIncome;
+	int rating;
+	int rNum;
+	String next;
+	int movieNumber;
+	float movieDuration;
+	int mduration;
+	Scanner scan = new Scanner(System.in);
+	void DetialsEntry()
+	{
+		do{
+			System.out.println("Enter Movie ID :");
+			movieID = scan.next();
+			System.out.println("Enter Movie Name :");
+			movieName = scan.next();
+			System.out.println("enter actor name");
+			actorName = scan.next();
+			System.out.println("enter director name");
+			directorName = scan.next();
+				if(directorName.matches("JohnD"))
+				{
+					dname++;
+				}
+			System.out.println("enter movie release year");
+			yearOfRelease = scan.nextInt();
+			System.out.println("enter movie language");
+			language = scan.next();
+				if(language.matches("hindi"))
+				{
+					hindi++;
+				}
+				if(language.matches("english"))
+				{
+					english++;
+				}
+				if(language.matches("chinese"))
+				{
+					chinese++;
+				}
+			System.out.println("enter total movie income");
+			income = scan.nextInt();
+				totalIncome = totalIncome + income;
+			System.out.println("enter movie rating");
+			rating = scan.nextInt();
+				if(rating>=4)
+				{
+					rNum++;
+				}
+			System.out.println("Enter the duration of the movie");
+			movieDuration = scan.nextFloat();
+			if(movieDuration >= 1.5f)
+			{
+				mduration++;
+			}
+			movieNumber++;
+			System.out.println("new movie details to be entered? yes or no");
+			next = scan.next();
+		}while(next.matches("yes"));
+	}
+}
+public class MovieDetialsExe {
+	
+	public static void main(String[] args){
+		MovieDetails obj = new MovieDetails(); 
+		obj.DetialsEntry();
+		System.out.println("Total number of movies released are : "+ obj.movieNumber);
+		System.out.println("Total income of all movies is : " + obj.totalIncome);
+		System.out.println("Total number of movies with rating higher than 4 : " + obj.rNum);
+		System.out.println("Total number of movies released in\n"
+				+ "Hindi : " + obj.hindi+"\n"
+				+ "English : " + obj.english+"\n"
+				+ "Chinese : " + obj.chinese);
+		System.out.println("Total number of movies whose director name is JohnD are "+ obj.dname);
+		System.out.println("Total number of movies with duration higher than 1.5 hours is : "+ obj.mduration);
+	}
+}
+ 

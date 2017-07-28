@@ -1,0 +1,36 @@
+11) Write a java program to accept a number of any digit and reverse the numbers.
+
+PROGRAM
+-------
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class NumReverse {
+
+	public static void main(String[] args) {
+		ReverseImp obj = new ReverseImp();
+		obj.reverse();
+	}
+
+}
+
+class ReverseImp
+{
+	int num;
+	int reverse =0;
+	Scanner scan = new Scanner(System.in);
+	void reverse()
+	{
+		System.out.println("Enter number to be reversed :");
+		num = scan.nextInt();
+		int outNum = num;
+		while( num != 0 )
+	      {
+	          reverse = reverse * 10;
+	          reverse = reverse + (num%10);
+	          num = num/10;
+	      }
+		System.out.println("Reverse of "+ outNum + " is "+ reverse);
+	}
+}

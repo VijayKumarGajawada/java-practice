@@ -1,0 +1,39 @@
+14) Write a program to accept a string and check whether 3rd character is 's' or not.
+
+PROGRAM
+-------
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class CharCheck {
+
+	public static void main(String[] args) {
+		CharCheckImp obj = new CharCheckImp();
+		obj.inputWord();
+		obj.check();
+	}
+
+}
+
+class CharCheckImp
+{
+	String word;
+	Scanner scan = new Scanner(System.in);
+	void inputWord()
+	{
+		System.out.println("Enter word : ");
+		word = scan.next();
+	}
+	void check()
+	{
+		if(word.charAt(2) !='s')
+		{
+			System.out.println("3rd character is not 's'");
+		}
+		else
+		{
+			System.out.println("3rd character is 's'");
+		}
+	}
+}

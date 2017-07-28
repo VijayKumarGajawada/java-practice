@@ -1,0 +1,32 @@
+16) Write a program to accept a string and replace third character with 't' without functions.
+
+PROGRAM
+-------
+
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class CharReplace {
+
+	public static void main(String[] args) {
+		CharReplaceImp obj = new CharReplaceImp();
+		obj.replaceChar();
+	}
+}
+
+class CharReplaceImp
+{
+	Scanner scan = new Scanner(System.in);
+	void replaceChar()
+	{
+		System.out.println("Enter the word :");
+		char[] word = scan.next().toCharArray();
+		word[2] = 'T';
+		System.out.println("Character replaced word is :");
+		for(char i:word){
+			System.out.print(i);
+		}
+	}
+	
+}

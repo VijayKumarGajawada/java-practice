@@ -1,0 +1,74 @@
+8) Write a program to accept the detials of 10 employee like
+   EmployeeID -- String
+   Empname -- String
+   Empage -- int
+   Empsal -- int
+   Empdept -- String
+
+   Display the name of employee who earn maximum.
+   Display the name of employee who is elder to all.
+
+PROGRAM
+-------
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class EmpDetails {
+
+	public static void main(String[] args) {
+		EmpDetailsImp obj = new EmpDetailsImp();
+		obj.inputDetials();
+		obj.getAnalysis();
+	}
+
+}
+
+class EmpDetailsImp
+{
+	String empID;
+	String empName;
+	int empAge;
+	int maxAge = 0;
+	String maxAgeName;
+	int empSal;
+	int maxSal =0;
+	String maxSalName;
+	String empDept;
+	
+	
+	Scanner scan = new Scanner(System.in);
+	void inputDetials()
+	{
+		for(int i = 1; i<=10; i++)
+		{
+			System.out.println("Enter the details of Employee "+i);
+			System.out.println("Enter the Employee ID :");
+			empID = scan.next();
+			System.out.println("Enter the Employee name :");
+			empName = scan.next();
+			System.out.println("Enter the Employee age :");
+			empAge = scan.nextInt();
+				if(empAge > maxAge)
+				{
+					maxAge = empAge;
+					maxAgeName = empName;
+				}
+			System.out.println("Enter the Employee salary :");
+			empSal = scan.nextInt();
+				if(empSal > maxSal)
+				{
+					maxSal = empSal;
+					maxSalName = empName;
+				}
+			System.out.println("Enter the Employee department :");
+			empDept = scan.next();
+		}
+	}
+	void getAnalysis()
+	{
+		System.out.println(maxSalName+ " is the name of the employee who earns the maximum");
+		System.out.println(maxAgeName+ " is the name of the employee who is elder to all");
+	}
+}
+

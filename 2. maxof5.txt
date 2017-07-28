@@ -1,0 +1,49 @@
+//Write a program in java to accept 5 numbers and display the maximum number.
+
+//PROGRAM
+
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class MaxOf_5 {
+
+	public static void main(String[] args) {
+		MaxNum obj = new MaxNum();
+		obj.maxNumber();
+	}
+}
+
+class MaxNum
+{
+	int num;
+	int max = 0;
+	void maxNumber()
+	{
+		Scanner scan = new Scanner(System.in);
+		for(int i = 1; i <=5; i++)
+		{
+			System.out.println("Enter the number "+i);
+			num = scan.nextInt();
+			if(max < num)
+			{
+				max = num;
+			}
+	    }
+		System.out.println("The maximum number is "+max);
+    }
+ }
+
+/* output :
+Enter the number 1
+123
+Enter the number 2
+21
+Enter the number 3
+45
+Enter the number 4
+658
+Enter the number 5
+205
+The maximum number is 658
+*/

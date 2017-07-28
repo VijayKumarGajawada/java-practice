@@ -1,0 +1,98 @@
+7. Write a program in java to accept student details like 
+   StudentID - String -- must start with S followed by 4 characters
+   Studentname - String
+   Studentage - int -- must not be greater than 100
+   Studentcity - String
+   Studentcountry - String - only india is allowed
+
+ Accept the details of 10 students.
+ Display the total counts of students whose age is greater than 21.
+ Display the total count of students who belong to similar city.
+
+PROGRAM
+-------
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class StudentEntryImp{
+	public static void main(String args[]){
+		StudentEntry obj = new StudentEntry();
+		obj.details();
+	}
+}
+
+class StudentEntry {
+	
+	Scanner scan = new Scanner(System.in);
+	void details()
+	{
+		int agecount = 0;
+		int hydCount = 0;
+		int puneCount = 0;
+		int mumbCount = 0;
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println("Enter the student "+ i +" details");
+			
+			System.out.println("Enter StudentID");
+			String id= scan.next();
+			idrule(id);
+			
+			System.out.println("Enter Student name");
+			String name = scan.next();
+			
+			System.out.println("Enter Student Age");
+			int age=scan.nextInt();
+			if(age > 21)
+			{ 
+				agecount++;
+			}  
+			agerule(age);
+			
+			System.out.println("Enter Student city");
+			String city=scan.next();
+			if(city.matches("Hyd"))
+			{
+				hydCount++;
+			}
+			if(city.matches("Pune"))
+			{
+				puneCount++;
+			}
+			if(city.matches("Mumbai"))
+			{
+				mumbCount++;
+			}
+			
+			System.out.println("Enter Student country");
+			String country=scan.next();
+			countryrule(country);
+		}
+		System.out.println("Number of students elder than 21: "+ agecount);
+		System.out.println("Number of students who belong to \n "
+				+ "Hyderbad :"+hydCount+"\n"
+				+ "Pune :"+puneCount+"\n"
+				+ "Mumbai :"+mumbCount);
+	}
+	void idrule(String id){
+		char first = id.charAt(0);
+		int idsize = id.length();
+		if((first != 's') | (idsize != 5))
+		{
+			System.out.println("Enter valid StudentID");
+		}
+	}
+	void agerule(int age){
+		if(age>100)
+		{
+			System.out.println("Enter age less than 100");
+		}
+	}
+	void countryrule(String country){
+		if(country.matches("India") == false)
+		{
+			System.out.println("Country should be entered as India");
+		}
+	}
+}

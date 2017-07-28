@@ -1,0 +1,128 @@
+/* Write a menu driven program for Calculator 
+    1. Addition
+    2. Multiplication
+    3. Subtraction
+    4. Division
+    5. Percentage
+    6. Exit
+
+PROGRAM */
+
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class CalC {
+
+	public static void main(String[] args) {
+		Calculator obj = new Calculator();
+		obj.calculation();
+		System.out.println("Need to perform any other calculations? 'Yes or No?'");
+		Scanner scan = new Scanner(System.in);
+		String choice = scan.nextLine();
+		while(choice.matches("yes"))
+		{
+			obj.calculation();
+			System.out.println("Need to perform any other calculations? 'Yes or No?'");
+			choice = scan.nextLine();
+		}
+		System.out.println("OK Bye");
+	}
+}
+
+class Calculator
+{
+	 void calculation(){
+	 Scanner scan = new Scanner(System.in);
+		System.out.println("Enter two numbers for calculation : ");
+		int num1 = scan.nextInt();
+		int num2 = scan.nextInt();
+		System.out.println("Choose the calculation you need to perform : \n"
+				+ "1. Addition \n"
+				+ "2. Subtraction \n"
+				+ "3. Multiplication \n"
+				+ "4. Division \n"
+				+ "5. Percentage");
+		int number = options();
+		while(number>5)									
+		{
+			System.out.println("Please choose only from the 5 options");
+			number = options();
+		}
+		switch(number)
+		{
+		case 1 :
+			System.out.println("Addition of "+ num1 + " and " + num2 + " is : " + add(num1,num2));
+			break;
+		case 2 :
+			System.out.println("Subtraction of "+ num1 + " and " + num2 + " is : " + sub(num1,num2));
+			break;
+		case 3 :
+			System.out.println("Multiplication of "+ num1 + " and " + num2 + " is : " + mul(num1,num2));
+			break;
+		case 4 :
+			System.out.println("Division of "+ num1 + " and " + num2 + " is : " + div(num1,num2));
+			break;
+		case 5 :
+			System.out.println("Percentage of "+ num1 + " and " + num2 + " is : " + perc(num1,num2));
+		default :
+			break;
+		}
+	}	
+	public int options(){
+		Scanner scan = new Scanner(System.in);
+		int option = scan.nextInt();
+		return option;
+	}
+	public int add(int num1, int num2){
+		int addition = num1 + num2;
+		return addition;
+	}
+	public int sub(int num1 , int num2){
+		int subtraction = num1 - num2;
+		return subtraction;
+	}
+	public int mul(int num1, int num2){
+		int product = num1 * num2;
+		return product;
+	}
+	public float div(int num1, int num2){
+		float division = (num1/num2);
+		return division;
+	}
+	public float perc(int num1, int num2)
+	{
+		float percentage = (num1*100)/num2;
+		return percentage;
+	}
+}
+
+/* output
+Enter two numbers for calculation : 
+30
+10
+Choose the calculation you need to perform : 
+1. Addition 
+2. Subtraction 
+3. Multiplication 
+4. Division 
+5. Percentage
+1
+Addition of 30 and 10 is : 40
+Need to perform any other calculations? 'Yes or No?'
+yes
+Enter two numbers for calculation : 
+10
+9
+Choose the calculation you need to perform : 
+1. Addition 
+2. Subtraction 
+3. Multiplication 
+4. Division 
+5. Percentage
+3
+Multiplication of 10 and 9 is : 90
+Need to perform any other calculations? 'Yes or No?'
+no
+OK Bye
+*/

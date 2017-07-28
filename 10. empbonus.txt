@@ -1,0 +1,60 @@
+10) Write a program in java to accept the details of 10 employees. Display the total
+    bonus given to the employee during festival season. 
+    Bonus criteria:
+    
+    if salary is 10000 bonus == 30%
+    if salary is 50000 bonus == 20%
+    if salary is 100000 bonus == 10%
+   
+    Details will be : Empname ; empsalary
+
+PROGRAM
+-------
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class EmpBonus {
+
+	public static void main(String[] args) {
+		EmpBonusImp obj = new EmpBonusImp();
+		obj.bonusSalaray();
+	}
+}
+
+class EmpBonusImp
+{
+	String empName;
+	int empSal;
+	int bonusSal = 0;
+	Scanner scan = new Scanner(System.in);
+	void bonusSalaray()
+	{
+		for(int i=1; i<=10; i++)
+		{
+			System.out.println("Enter the details of Employee "+i);
+			System.out.println("Enter Employee name :");
+			empName = scan.next();
+			System.out.println("Enter Employee salary :");
+			empSal = scan.nextInt();
+			if((empSal>=10000) & (empSal<50000))
+			{
+				bonusSal = empSal + percentage(empSal, 30);
+			}
+			else if((empSal>=50000) & (empSal<100000))
+			{
+				bonusSal = empSal + percentage(empSal, 20);
+			}
+			else if(empSal>=100000)
+			{
+				bonusSal = empSal + percentage(empSal, 10);
+			}
+			System.out.println("Salary after bonus given to Employee name "+empName.toUpperCase()+" is " + bonusSal + "\n");
+		}
+	}
+	int percentage(int sal, int perc)
+	{
+		int ans = (sal*perc)/100;
+		return ans;
+	}
+}

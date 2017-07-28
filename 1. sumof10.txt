@@ -1,0 +1,45 @@
+//Write a program in java to accept 10 numbers and display the sum of 10 numbers.
+
+//PROGRAM
+
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class SumOf_10 {
+	public static void main(String[] ags)
+	{
+		int num, total= 0;
+		Scanner scan = new Scanner(System.in);
+		for(int i =1 ;i <= 10;i++)
+		{
+			System.out.println("Enter number "+i);
+			num = scan.nextInt();
+			total += num; 
+		}
+		System.out.println("The sum of given 10 numbers is "+total);
+	}
+}
+
+/* output
+Enter number 1
+10
+Enter number 2
+20
+Enter number 3
+30
+Enter number 4
+40
+Enter number 5
+50
+Enter number 6
+60
+Enter number 7
+70
+Enter number 8
+80
+Enter number 9
+90
+Enter number 10
+100
+The sum of given 10 numbers is 550 */

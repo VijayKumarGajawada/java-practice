@@ -1,0 +1,53 @@
+//Write a program to accept marks of 3 subjects and display pass if percentage of marks is
+//   greater than 50 and display fail if marks is less than 50.
+
+//PROGRAM
+
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class PassOrFail {
+
+	public static void main(String[] args) {
+		Marks obj = new Marks();
+		obj.inputMarks();
+		obj.result();
+	}
+}
+
+class Marks
+{
+	int subj1, subj2, subj3;
+	Scanner scan = new Scanner(System.in);
+	void inputMarks()
+	{
+		System.out.println("Enter Subject 1 marks");
+		subj1 = scan.nextInt();
+		System.out.println("Enter Subject 2 marks");
+		subj2 = scan.nextInt();
+		System.out.println("Enter Subject 3 marks");
+		subj3 = scan.nextInt();
+	}
+	void result()
+	{
+		int percentage;
+		percentage = (subj1+subj2+subj3)/3;
+		if(percentage < 50)
+		{
+			System.out.println("Result : Fail");
+		}
+		if(percentage >= 50)
+		{
+			System.out.println("Result : Pass");
+		}
+	}
+}
+/*output :
+Enter Subject 1 marks
+25
+Enter Subject 2 marks
+70
+Enter Subject 3 marks
+82
+Result : Pass */

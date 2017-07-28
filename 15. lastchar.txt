@@ -1,0 +1,28 @@
+15) Write a program to accept a string and display last character without using string function.
+
+PROGRAM
+-------
+
+package niit.javaprograms;
+
+import java.util.Scanner;
+
+public class LastChar {
+
+	public static void main(String[] args) {
+		LastCharImp obj = new LastCharImp();
+		obj.lastChar();
+	}
+}
+
+class LastCharImp
+{
+	Scanner scan = new Scanner(System.in);
+	void lastChar()
+	{
+		System.out.println("Enter the word :");
+		char[] word = scan.next().toCharArray();
+		System.out.println("The last character of is : "+ word[word.length-1]);
+	}
+	
+}

@@ -1,4 +1,4 @@
-Write a program to accept the customer details like :-
+/*Write a program to accept the customer details like :-
 1.  CustomerId        -- String -- 
 2.  CustomerName      -- String -- 
 3.  CustomerGender    -- String -- 
@@ -27,7 +27,7 @@ Analysis
 	3. Display the total customer who like Traveling
 	4. Display total customer who like reading
 	5. Display total customer who is above 18 years of age
-	6. Display total customer who do not have phone number.
+	6. Display total customer who do not have phone number. */
 
 //Program: 
 

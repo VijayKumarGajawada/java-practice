@@ -1,0 +1,104 @@
+package arrays;
+
+import java.util.Scanner;
+
+public class GroceryMain {
+
+	static Scanner scan = new Scanner(System.in);
+	static GroceryList groceryList = new GroceryList();
+	
+	public static void main(String[] args) {
+		int choice = 0;
+		boolean quit = false;
+		printOptions();
+		while(!quit)
+		{
+			System.out.println("Enter your choice: ");
+			choice = scan.nextInt();
+			scan.nextLine();
+			while(choice > 6)
+			{
+				System.out.println("PLease choose from only the given options: ");
+				System.out.print("Enter your choice: ");
+				choice = scan.nextInt();
+			}
+			switch (choice) 
+			{
+			case 0:
+				printOptions();
+				break;
+			case 1:
+				groceryList.printGroceryList();
+				break;
+			case 2:
+				addItem();
+				break;
+			case 3:
+				modifyItem();
+				break;
+			case 4:
+				removeItem();
+				break;
+			case 5:
+				searchForItem();
+				break;	
+			case 6:
+				quit = true;
+				System.out.println("Thankyou for using the application.");
+				break;
+			}
+		}
+		
+		
+	}
+
+	static void printOptions()
+	{
+		System.out.println("Press : ");
+		System.out.println("\t 0. To choose options.");
+		System.out.println("\t 1. To print the list of grocery items.");
+		System.out.println("\t 2. To add an item to the grocery list.");
+		System.out.println("\t 3. To modify an item in the grocery list.");
+		System.out.println("\t 4. To remove an item in the grocery list.");
+		System.out.println("\t 5. To search for an item in the grocery list");
+		System.out.println("\t 6. To quit the application");
+	}
+	
+	static void addItem()
+	{
+		System.out.print("Please enter the grocery item: ");
+		groceryList.addGroceryItem(scan.nextLine());
+	}
+	
+	static void modifyItem()
+	{
+		System.out.print("Please enter the current grocery item: ");
+		String currentItem= scan.nextLine();
+		System.out.print("Enter the replacement grocery item: ");
+		String newItem = scan.nextLine();
+		groceryList.modifyGroceryItem(currentItem, newItem);
+	}
+	
+	static void removeItem()
+	{
+		System.out.print("Please enter the item name: ");
+		String itemName = scan.nextLine();
+		groceryList.removeGroceryItem(itemName);
+		System.out.println(itemName.toUpperCase()+ " has been removed from the list.");
+	}
+	
+	static void searchForItem()
+	{
+		System.out.print("Please enter the item to search for: ");
+		String searchItem = scan.nextLine();
+		if(groceryList.inList(searchItem))
+		{
+			System.out.println("Found " + searchItem.toUpperCase() + " in your grocery list." );
+		}
+		else 
+		{
+			System.out.println("Sorry!! " + searchItem.toUpperCase() + " is not found in the grocery list.");
+		}
+	}
+}
+

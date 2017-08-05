@@ -1,0 +1,34 @@
+package arrays;
+
+import java.util.Scanner;
+
+public class IntArray_Avg {
+
+	static Scanner scan = new Scanner(System.in);
+	public static void main(String[] args) {
+		int[] myIntegers = getIntegers(5);
+		System.out.println("your numbers are: ");
+		for(int i : myIntegers){
+			System.out.print(i+" ");
+		}
+		System.out.println("\nyour number average: "+getAverage(myIntegers));
+		
+		
+	}
+	public static int[] getIntegers(int numberOf) {
+		System.out.println("Enter "+numberOf+" integer type values");
+		int[] intergers = new int[numberOf];
+		for(int i =0; i< intergers.length; i++ ){
+			intergers[i]=scan.nextInt();
+		}
+		return intergers; 
+	}
+	
+	public static double getAverage(int[] intArray){
+		int sum = 0;
+		for(int i=0; i<intArray.length;i++){
+			sum += intArray[i];
+		}
+		return (double)sum / (double)intArray.length;
+	}
+}

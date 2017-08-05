@@ -1,0 +1,206 @@
+Write a program to accept the customer details like :-
+1.  CustomerId        -- String -- 
+2.  CustomerName      -- String -- 
+3.  CustomerGender    -- String -- 
+4.  CustomerAge       -- int -- 
+5.  CustomerAddress   -- String -- 
+6.  CustomerCity      -- String -- 
+7.  CustomerCountry   -- String -- 
+8.  CustomerPin       -- String -- 
+9.  CustomerPhone     -- String -- 
+10. CustomerAreaOfInterest --String--
+11. CustomerDOB       -- String -- 
+
+Validate the data:-
+1.  CustomerId-must not be more than 4 character and must start with 'C'
+2.  CustomerName -- data must not be blank or null
+3.  CustomerGender -- Should allow only Male and Female    
+4.  CustomerPhone     should allow null value if user is not entring any data
+5. CustomerAreaOfInterest -- user must enter 2 value
+6. CustomerDOB     --should not be more than 8 characters
+
+Analysis
+1. Add at least 10 records and store the data in file seperated by delimeter like comma and space
+2. After storing the data kindly read the data from file and do below analysis
+	1. Display total male and female customers
+	2. Display the total customer country wise
+	3. Display the total customer who like Traveling
+	4. Display total customer who like reading
+	5. Display total customer who is above 18 years of age
+	6. Display total customer who do not have phone number.
+
+//Program: 
+
+package javaprogs;
+
+import java.io.*;
+
+public class CustomerDetails {
+	
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	String CustomerId;
+	String CustomerName;
+	String CustomerGender;
+	int CustomerAge;
+	String CustomerAddress;
+	String CustomerCity;
+	String CustomerCountry;
+	String CustomerPin;
+	String CustomerPhone; 
+	String CustomerAreaOfInterest;
+	String CustomerDOB;
+
+	void customerDetailsEntry() throws IOException
+	{
+		File file = new File("E:\\java\\CustomerDetails.txt");
+		FileWriter fw = new FileWriter(file);
+		BufferedWriter bw = new BufferedWriter(fw);
+		
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println("Enter CustomerId:");
+			CustomerId = input.readLine();
+			idRule(CustomerId);
+			
+			System.out.println("Enter CustomerName");
+			CustomerName = input.readLine();
+			nameRule(CustomerName);
+			
+			System.out.println("Enter CustomerGender");
+			CustomerGender=input.readLine();
+			genderRule(CustomerGender);
+			
+			System.out.println("Enter CustomerAge");
+			CustomerAge = Integer.parseInt(input.readLine());
+			
+			System.out.println("Enter CustomerAddress");
+			CustomerAddress = input.readLine();
+			
+			System.out.println("Enter CustomerCity");
+			CustomerCity = input.readLine();
+			
+			System.out.println("Enter CustomerCountry");
+			CustomerCountry = input.readLine();
+			
+			System.out.println("Enter CustomerPin");
+			CustomerPin = input.readLine();
+			
+			System.out.println("Enter CustomerPhone");
+			CustomerPhone = input.readLine();
+			
+			System.out.println("Enter CustomerAreaOfInterest");
+			CustomerAreaOfInterest = input.readLine();
+			AOI_rule(CustomerAreaOfInterest);
+			
+			System.out.println("Enter CustomerDOB");
+			CustomerDOB = input.readLine();
+			dobRule(CustomerDOB);
+			
+			bw.write(CustomerId+",");
+			bw.write(CustomerName+",");
+			bw.write(CustomerGender+",");
+			bw.write(CustomerAge+",");
+			bw.write(CustomerAddress+",");
+			bw.write(CustomerCity+",");
+			bw.write(CustomerCountry+",");
+			bw.write(CustomerPin+",");
+			bw.write(CustomerPhone+",");
+			bw.write(CustomerAreaOfInterest+",");
+			bw.write(CustomerDOB);
+			bw.newLine();
+			bw.flush();
+		}
+	}
+	void fileRead() throws IOException
+	{
+		File file = new File("E:\\java\\CustomerDetails.txt");
+		FileReader fr = new FileReader(file);
+		BufferedReader br = new BufferedReader(fr);
+		String strRead = null;
+		String[] detArr = null;
+		int maleCount=0;
+		int femaleCount=0;
+		int travelingCount=0;
+		int readingCount=0;
+		int ageCount=0;
+		int noPhoneCount=0;
+		while((strRead = br.readLine())!=null)
+		{
+			detArr = strRead.split(",");
+			if(detArr[2].matches("male"))
+			{
+				maleCount++;
+			}
+			if(detArr[2].matches("female"))
+			{
+				femaleCount++;
+			}
+			if(detArr[9].matches("traveling") || detArr[10].matches("traveling") )
+			{
+				travelingCount++;
+			}
+			if(detArr[9].matches("reading") || detArr[10].matches("reading"))
+			{
+				readingCount++;
+			}
+			if((Integer.parseInt(detArr[3])) > 18)
+			{
+				ageCount++;
+			}
+			if(detArr[8]==null)
+			{
+				noPhoneCount++;
+			}
+		}
+		System.out.println("Total male customers: "+maleCount);
+		System.out.println("Total female customers: "+femaleCount);
+		System.out.println("Total customer who like Traveling: "+travelingCount);
+		System.out.println("Total customer who like Reading: "+readingCount);
+		System.out.println("Total customer who is above 18 years of age: "+ageCount);
+		System.out.println("Total customer who do not have phone number: "+noPhoneCount);
+		
+	}
+	void idRule(String id)
+	{
+		if((id.length()>4) || (id.charAt(0)!='c'))
+		{
+			System.out.println("Entered ID is invalid");
+		}
+	}
+	void nameRule(String name)
+	{
+		if(name==null)
+		{
+			System.out.println("Invalid name entry");
+		}
+	}
+	void genderRule(String gender)
+	{
+		if(!gender.matches("male") & !gender.matches("female"))
+		{
+			System.out.println("Invalid gender entry");
+		}
+	}
+	void AOI_rule(String interest)
+	{
+		String[] intrstArr = interest.split(",");
+		if(intrstArr.length!=2)
+		{
+			System.out.println("Enter two values for area of interest");
+		}
+	}
+	void dobRule(String dob)
+	{
+		if(dob.length()>=8)
+		{
+			System.out.println("Invalid DOB entry");
+		}
+	}
+	
+	public static void main(String[] args) throws IOException
+	{
+		CustomerDetails obj = new CustomerDetails();
+		obj.customerDetailsEntry();
+		obj.fileRead();
+	}
+}

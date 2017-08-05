@@ -1,0 +1,10 @@
+c001,Mic,male,22,wanderstreet,national city,usa,60053,788545122,traveling,reading,4-4-97
+c002,Barry,male,24,jitters,central city,usa,29923,26373356,hillclimbing,running,4-4-99
+c003,Diana,female,17,clark road,london,uk,32226,26373252,reading,movies,2-5-03
+c004,Rahul,male,33,hillstreet,pune,india,30088,798899225,traveling,music,3-5-99
+c004,Charan,male,18,arapole,kerala,india,39921,8678327289,swimming,sports,4-6-99
+c005,Emily,female,24,red hard,hells kitchen,usa,26622,888112446,games,chess,9-7-99
+c006,Tina,female,15,baga,goa,india,48822,8976972927,beaches,skipping,5-9-97
+c007,Rinku,female,27,parampore,goa,india,47772,978697292,hills,coffee,23-6-98
+c008,elon,male,35,northcar,venicity,uk,66333,737468333,cars,bikes,5-5-89
+c009,Arya,female,23,capitol,starkcity,usa,66337,8884547843,reading,movies,8-3-95

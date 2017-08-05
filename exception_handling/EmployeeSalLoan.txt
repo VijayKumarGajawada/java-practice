@@ -1,0 +1,63 @@
+/*Write a program in java to create User Defined Exception which will accept Employee Salary as input 
+	1. if salary is less than 0 display the message that you are not eligible for Loan. 
+	2. If salary is greater than 10000 display message that you are eligible for loan of 100000.
+	3. If salary is greater than 50000 display message that you are eligible for loan of 500000.
+	4. If salary is greater than 100000 display message that you are eligible for loan of 1000000. */
+//Program: 
+package javaprogs;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class EmployeeSalLoan {
+
+	public void salInput() throws EmpException, IOException {
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		System.out.println("Enter the salary of employee: ");
+		String strSal = br.readLine();
+		int sal = Integer.parseInt(strSal);
+		if(sal<0)
+		{
+			throw new EmpException("Not eligible for loan");
+		}
+		if(sal>10000 & sal<50000)
+		{
+			throw new EmpException("You are eligible for loan of 100000");
+		}
+		if(sal>50000 & sal<100000)
+		{
+			throw new EmpException("You are eligible for loan of 500000");
+		}
+		if(sal>100000)
+		{
+			throw new EmpException("You are eligible for loan of 1000000");
+		}
+	}
+
+	public static void main(String args[]) 
+	{
+		EmployeeSalLoan eobj = new EmployeeSalLoan();
+		try {
+			eobj.salInput();
+			} 
+		catch (EmpException e) {
+			System.out.println(e.getMessage());
+			} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+}
+
+class EmpException extends Exception
+{
+	public EmpException(String msg) {
+		super(msg);
+	}
+}
+

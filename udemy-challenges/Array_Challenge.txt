@@ -1,0 +1,51 @@
+package arrays;
+
+import java.util.Scanner;
+
+public class Array_Challenge {								//sort integers in descending order in an array
+
+	static Scanner scan = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		 int[] integers = getIntegers(5);
+		 int[] sorted = sortIntegers(integers);
+		 printArray(sorted);
+	}
+	
+	public static int[] getIntegers(int size){
+		int[] intArray = new int[size];
+		System.out.println("Enter the integers :");
+		for(int i=0 ;i<intArray.length ; i++)
+		{
+			intArray[i]=scan.nextInt();
+		}
+		return intArray;
+	}
+	public static void printArray(int[] arr){
+		System.out.println("Integers are :");
+		for(int i : arr)
+		{
+			System.out.println(i);
+		}
+	}
+	
+	public static int[] sortIntegers(int[] arr){
+		int[] sortedArray = arr;
+		boolean flag = true;
+		int temp;
+		while(flag){
+			flag = false;
+			for(int i=0; i<sortedArray.length-1; i++)
+			{
+				if(sortedArray[i]<sortedArray[i+1])
+				{
+					temp = sortedArray[i];
+					sortedArray[i]=sortedArray[i+1];
+					sortedArray[i+1]=temp;
+					flag = true;
+				}
+			}
+		}
+		return sortedArray ;
+	}
+}
